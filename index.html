@@ -11,7 +11,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #0f172a;
+
+      /* ARKA PLAN GÖRSEL */
+      background-image: url("web sitelerii arka plan.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
@@ -21,6 +27,11 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+
+      /* YAZILAR OKUNSUN DİYE */
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 20px;
     }
 
     h1 {
@@ -32,6 +43,7 @@
       display: flex;
       gap: 20px;
       justify-content: center;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -45,6 +57,7 @@
       color: white;
       text-decoration: none;
       border-radius: 12px;
+      cursor: pointer;
     }
 
     .green {
@@ -53,6 +66,12 @@
 
     .red {
       background-color: #ef4444;
+    }
+
+    /* HOVER EFEKTİ (BONUS) */
+    .btn:hover {
+      transform: scale(1.05);
+      transition: 0.2s;
     }
   </style>
 </head>
