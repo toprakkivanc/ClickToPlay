@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tank Struggle | ClickToPlay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #0f172a;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    header {
+      padding: 10px;
+      background: #020617;
+      text-align: center;
+      position: relative;
+      font-size: 24px;
+    }
+
+    .back {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      color: #22c55e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50px; /* back butonunun biraz sağı */
+      top: 10px;
+      height: 40px; /* logonun yüksekliği */
+    }
+
+    .game-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    iframe {
+      width: 800px; /* istersen değiştirebilirsin */
+      height: 600px; /* istersen değiştirebilirsin */
+      border: none;
+    }
+
+    @media (max-width: 850px) {
+      iframe {
+        width: 100%;
+        height: 80%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="games.html" class="back">⬅ Oyunlar</a>
+    <img src="logo.png" alt="ClickToPlay Logo" class="logo">
+    💣 Tank Struggle
+  </header>
+
+  <div class="game-container">
+    <!-- Tank Struggle iframe -->
+    <iframe src="https://www.twoplayergames.org/game/tank-struggle/embed" allowfullscreen></iframe>
+  </div>
+
+</body>
+</html>
