@@ -32,22 +32,11 @@
       font-weight: bold;
     }
 
-    #searchInput {
-      display: block;
-      margin: 0 auto 20px auto;
-      padding: 10px;
-      width: 50%;
-      max-width: 400px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: none;
-    }
-
     .games {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      padding: 0 20px 20px 20px;
+      padding: 20px;
       max-width: 1200px;
       margin: auto;
     }
@@ -78,7 +67,6 @@
       font-weight: bold;
       opacity: 0;
       transition: 0.3s;
-      text-align: center;
     }
 
     .game-card:hover .overlay {
@@ -95,73 +83,81 @@
     <a href="index.html">⬅ Ana Sayfa</a>
   </div>
 
-  <!-- Arama çubuğu -->
-  <input type="text" id="searchInput" placeholder="Oyun ara..." onkeyup="filterGames()">
+  <div class="games">
 
-  <div class="games" id="gamesContainer">
-
-    <a href="basket-random.html" class="game-card">
-      <img src="basket-random.jpg" alt="Basket Random">
-      <div class="overlay">Basket Random</div>
+    <!-- Mevcut oyunlar -->
+    <a href="basket-random.html">
+      <div class="game-card">
+        <img src="basket-random.jpg" alt="Basket Random">
+        <div class="overlay">Basket Random</div>
+      </div>
     </a>
 
-    <a href="tank-struggle.html" class="game-card">
-      <img src="tank-struggle.jpg" alt="Tank Struggle">
-      <div class="overlay">Tank Struggle</div>
+    <a href="tank-struggle.html">
+      <div class="game-card">
+        <img src="tank-struggle.jpg" alt="Tank Struggle">
+        <div class="overlay">Tank Struggle</div>
+      </div>
     </a>
 
-    <a href="stickman-hook.html" class="game-card">
-      <img src="stickman-hook.jpg" alt="Stickman Hook">
-      <div class="overlay">Stickman Hook</div>
+    <a href="stickman-hook.html">
+      <div class="game-card">
+        <img src="stickman-hook.jpg" alt="Stickman Hook">
+        <div class="overlay">Stickman Hook</div>
+      </div>
     </a>
 
-    <a href="subway-surfers.html" class="game-card">
-      <img src="subway-surfers.jpg" alt="Subway Surfers">
-      <div class="overlay">Subway Surfers</div>
+    <a href="subway-surfers.html">
+      <div class="game-card">
+        <img src="subway-surfers.jpg" alt="Subway Surfers">
+        <div class="overlay">Subway Surfers</div>
+      </div>
     </a>
 
-    <a href="fire-and-water-1.html" class="game-card">
-      <img src="fire-and-water-1.jpg" alt="Fire and Water 1">
-      <div class="overlay">Fire and Water 1</div>
+    <!-- Yeni eklenen oyunlar -->
+    <a href="fire-and-water-1.html">
+      <div class="game-card">
+        <img src="fire-and-water-1.jpg" alt="Fire and Water 1">
+        <div class="overlay">Fire and Water 1</div>
+      </div>
     </a>
 
-    <a href="fire-and-water-2.html" class="game-card">
-      <img src="fire-and-water-2.jpg" alt="Fire and Water 2">
-      <div class="overlay">Fire and Water 2</div>
+    <a href="fire-and-water-2.html">
+      <div class="game-card">
+        <img src="fire-and-water-2.jpg" alt="Fire and Water 2">
+        <div class="overlay">Fire and Water 2</div>
+      </div>
     </a>
 
-    <a href="fire-and-water-3.html" class="game-card">
-      <img src="fire-and-water-3.jpg" alt="Fire and Water 3">
-      <div class="overlay">Fire and Water 3</div>
+    <a href="fire-and-water-3.html">
+      <div class="game-card">
+        <img src="fire-and-water-3.jpg" alt="Fire and Water 3">
+        <div class="overlay">Fire and Water 3</div>
+      </div>
     </a>
 
-    <a href="fire-and-water-4.html" class="game-card">
-      <img src="fire-and-water-4.jpg" alt="Fire and Water 4">
-      <div class="overlay">Fire and Water 4</div>
+    <a href="fire-and-water-4.html">
+      <div class="game-card">
+        <img src="fire-and-water-4.jpg" alt="Fire and Water 4">
+        <div class="overlay">Fire and Water 4</div>
+      </div>
     </a>
 
-    <a href="fire-and-water-5.html" class="game-card">
-      <img src="fire-and-water-5.jpg" alt="Fire and Water 5">
-      <div class="overlay">Fire and Water 5</div>
+    <a href="fire-and-water-5.html">
+      <div class="game-card">
+        <img src="fire-and-water-5.jpg" alt="Fire and Water 5">
+        <div class="overlay">Fire and Water 5</div>
+      </div>
     </a>
 
-    <a href="tank-mayhem.html" class="game-card">
-      <img src="tank-mayhem.jpg" alt="Tank Mayhem">
-      <div class="overlay">Tank Mayhem</div>
+    <a href="tank-mayhem.html">
+      <div class="game-card">
+        <img src="tank-mayhem.jpg" alt="Tank Mayhem">
+        <div class="overlay">Tank Mayhem</div>
+      </div>
     </a>
 
   </div>
-
-  <script>
-    function filterGames() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const games = document.getElementById('gamesContainer').getElementsByTagName('a');
-      for (let i = 0; i < games.length; i++) {
-        const name = games[i].querySelector('.overlay').textContent.toLowerCase();
-        games[i].style.display = name.includes(input) ? '' : 'none';
-      }
-    }
-  </script>
 
 </body>
 </html>
