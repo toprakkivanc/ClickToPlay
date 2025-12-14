@@ -11,33 +11,56 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
-      /* ARKA PLAN GÖRSEL */
       background-image: url("bg.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
+      overflow: hidden;
     }
 
-    .container {
+    /* Loading ekranı */
+    #loading {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
       display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 24px;
+      z-index: 10;
+    }
+
+    .spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #22c55e;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Yaş onayı ekranı */
+    #ageContainer {
+      display: none; /* JS ile gösterilecek */
       flex-direction: column;
       gap: 20px;
-
-      /* YAZILAR OKUNSUN DİYE */
       background: rgba(0, 0, 0, 0.6);
       padding: 40px;
       border-radius: 20px;
+      z-index: 5;
     }
 
-    h1 {
-      font-size: 64px;
-      margin-bottom: 10px;
-    }
+    h1 { font-size: 64px; margin-bottom: 10px; }
 
     .buttons {
       display: flex;
@@ -60,37 +83,61 @@
       cursor: pointer;
     }
 
-    .green {
-      background-color: #22c55e;
-    }
+    .green { background-color: #22c55e; }
+    .red { background-color: #ef4444; }
 
-    .red {
-      background-color: #ef4444;
-    }
+    .btn:hover { transform: scale(1.05); transition: 0.2s; }
 
-    /* HOVER EFEKTİ (BONUS) */
-    .btn:hover {
-      transform: scale(1.05);
-      transition: 0.2s;
-    }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1> ClickToPlay</h1>
+  <!-- Loading ekranı -->
+  <div id="loading">
+    <div class="spinner"></div>
+    <div>Yükleniyor...</div>
+  </div>
 
+  <!-- Yaş onayı -->
+  <div class="container" id="ageContainer">
+    <h1>ClickToPlay</h1>
     <div class="buttons">
-      <a href="games.html" class="btn green">
+      <a href="games.html" class="btn green" id="olderBtn">
         5 yaş ve üzerindeyim<br>Devam Et
       </a>
-
-      <div class="btn red">
+      <div class="btn red" id="youngerBtn">
         5 yaş altındayım
       </div>
     </div>
   </div>
+
+  <script>
+    const ageChecked = localStorage.getItem('ageChecked') === 'true';
+    const loading = document.getElementById('loading');
+    const ageContainer = document.getElementById('ageContainer');
+
+    // 5 saniye bekle
+    setTimeout(() => {
+      loading.style.display = 'none';
+
+      if(ageChecked){
+        // Daha önce onay vermişse direkt oyunlar sayfasına yönlendir
+        window.location.href = "games.html";
+      } else {
+        // Onay vermemişse yaş onayı ekranını göster
+        ageContainer.style.display = 'flex';
+      }
+    }, 5000);
+
+    document.getElementById('olderBtn').addEventListener('click', function() {
+      localStorage.setItem('ageChecked', 'true');
+    });
+
+    document.getElementById('youngerBtn').addEventListener('click', function() {
+      alert("Üzgünüz, site 5 yaş ve üzeri için uygundur.");
+    });
+  </script>
 
 </body>
 </html>
