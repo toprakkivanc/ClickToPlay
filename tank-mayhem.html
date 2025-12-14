@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tank Mayhem | ClickToPlay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0f172a;
+      font-family: Arial, sans-serif;
+      color: white;
+      flex-direction: column;
+    }
+
+    .game-thumbnail {
+      cursor: pointer;
+      width: 400px;
+      height: auto;
+      border-radius: 12px;
+      transition: transform 0.2s;
+    }
+
+    .game-thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+    .game-container {
+      width: 800px;
+      height: 600px;
+      margin-top: 20px;
+      display: none; /* başlangıçta gizli */
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .disclaimer {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Görsel tıklanacak -->
+  <img src="tank-mayhem.jpg" alt="Tank Mayhem" class="game-thumbnail" id="gameThumb">
+
+  <!-- Oyun iframe -->
+  <div class="game-container" id="gameContainer">
+    <iframe src="https://www.twoplayergames.org/embed/tank-mayhem" allowfullscreen></iframe>
+  </div>
+
+  <div class="disclaimer">
+    Reklamlar bizim değildir, bu sayfadan herhangi bir kazanç sağlanmaz.
+  </div>
+
+  <script>
+    const thumb = document.getElementById('gameThumb');
+    const game = document.getElementById('gameContainer');
+
+    thumb.addEventListener('click', () => {
+      thumb.style.display = 'none'; // görseli gizle
+      game.style.display = 'block';  // iframe’i göster
+    });
+  </script>
+
+</body>
+</html>
+
