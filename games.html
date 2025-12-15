@@ -9,15 +9,35 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background-color: #0f172a;
       font-family: Arial, sans-serif;
       color: white;
 
-      /* 🔥 EKLENEN KISIM */
+      /* ARKA PLAN */
       background-image: url("bg-games.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+    }
+
+    /* SİLİK LACİVERT OVERLAY */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.85),
+        rgba(15, 23, 42, 0.6),
+        rgba(15, 23, 42, 0.4)
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* TÜM İÇERİK ÜSTTE KALSIN */
+    body > * {
+      position: relative;
+      z-index: 1;
     }
 
     header {
@@ -53,6 +73,7 @@
       overflow: hidden;
       cursor: pointer;
       height: 160px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
 
     .game-card img {
@@ -65,7 +86,7 @@
     .overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.65);
       display: flex;
       align-items: center;
       justify-content: center;
