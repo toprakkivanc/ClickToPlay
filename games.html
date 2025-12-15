@@ -1,156 +1,192 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <!-- TEMEL -->
   <meta charset="UTF-8">
-  <title>ClickToPlay | Ücretsiz Tarayıcı Oyunları</title>
+  <title>ClickToPlay | Oyunlar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- SEO -->
-  <meta name="description" content="ClickToPlay ile Subway Surfers, Fire and Water, Tank Mayhem ve daha birçok ücretsiz tarayıcı oyununu anında oyna. İndirme yok, direkt başla.">
-  <meta name="keywords" content="ücretsiz oyunlar, tarayıcı oyunları, fire and water, subway surfers, tank mayhem, online oyun sitesi">
-  <meta name="author" content="ClickToPlay">
-  <meta name="robots" content="index, follow">
-
-  <!-- SOSYAL PAYLAŞIM -->
-  <meta property="og:title" content="ClickToPlay | Ücretsiz Tarayıcı Oyunları">
-  <meta property="og:description" content="İndirmeden, reklamsız tarayıcı oyunları. Hemen oyna!">
-  <meta property="og:image" content="bg.png">
-  <meta property="og:type" content="website">
 
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-image: url("bg.png");
+      min-height: 100vh;
+      background-color: #0f172a;
+      background-image: url("bg-games.png");
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
+      background-attachment: fixed;
       font-family: Arial, sans-serif;
       color: white;
-      text-align: center;
-      overflow: hidden;
     }
 
-    #loading {
-      position: absolute;
+    /* ÜSTTE SİLİNİK LACİVERT KATMAN */
+    body::before {
+      content: "";
+      position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.9);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-size: 24px;
-      z-index: 10;
+      background: linear-gradient(
+        to bottom,
+        rgba(30, 41, 59, 0.65),
+        rgba(15, 23, 42, 0.35),
+        transparent
+      );
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .spinner {
-      border: 8px solid #f3f3f3;
-      border-top: 8px solid #22c55e;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
+    body > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .back {
+      text-align: center;
       margin-bottom: 20px;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .back a {
+      color: #22c55e;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
     }
 
-    #ageContainer {
-      display: none;
-      flex-direction: column;
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-      border-radius: 20px;
-      z-index: 5;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    h1 { font-size: 64px; margin-bottom: 10px; }
-
-    .buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
+    .game-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      height: 160px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .btn {
-      width: 200px;
-      height: 120px;
+    .game-card:hover {
+      transform: scale(1.08);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .game-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
+      font-size: 24px;
       font-weight: bold;
-      color: white;
-      text-decoration: none;
-      border-radius: 12px;
-      cursor: pointer;
+      opacity: 0;
+      transition: 0.3s;
     }
 
-    .green { background-color: #22c55e; }
-    .red { background-color: #ef4444; }
-
-    .btn:hover { transform: scale(1.05); transition: 0.2s; }
+    .game-card:hover .overlay {
+      opacity: 1;
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- Google’ın okuyacağı gizli içerik -->
-  <h2 style="display:none">
-    Ücretsiz tarayıcı oyunları – Fire and Water, Subway Surfers, Tank Mayhem
-  </h2>
+  <header>🎮 Oyunlar</header>
 
-  <!-- Loading -->
-  <div id="loading">
-    <div class="spinner"></div>
-    <div>giriş yapılıyor...</div>
+  <div class="back">
+    <a href="index.html">⬅ Ana Sayfa</a>
   </div>
 
-  <!-- Yaş onayı -->
-  <div class="container" id="ageContainer">
-    <h1>ClickToPlay</h1>
-    <div class="buttons">
-      <a href="games.html" class="btn green" id="olderBtn">
-        5 yaş ve üzerindeyim<br>Devam Et
-      </a>
-      <div class="btn red" id="youngerBtn">
-        5 yaş altındayım
+  <div class="games">
+
+    <a href="basket-random.html">
+      <div class="game-card">
+        <img src="basket-random.jpg" alt="Basket Random">
+        <div class="overlay">Basket Random</div>
       </div>
-    </div>
+    </a>
+
+    <a href="tank-struggle.html">
+      <div class="game-card">
+        <img src="tank-struggle.jpg" alt="Tank Struggle">
+        <div class="overlay">Tank Struggle</div>
+      </div>
+    </a>
+
+    <a href="stickman-hook.html">
+      <div class="game-card">
+        <img src="stickman-hook.jpg" alt="Stickman Hook">
+        <div class="overlay">Stickman Hook</div>
+      </div>
+    </a>
+
+    <a href="subway-surfers.html">
+      <div class="game-card">
+        <img src="subway-surfers.jpg" alt="Subway Surfers">
+        <div class="overlay">Subway Surfers</div>
+      </div>
+    </a>
+
+    <a href="fire-and-water-1.html">
+      <div class="game-card">
+        <img src="fire-and-water-1.jpg" alt="Fire and Water 1">
+        <div class="overlay">Fire and Water 1</div>
+      </div>
+    </a>
+
+    <a href="fire-and-water-2.html">
+      <div class="game-card">
+        <img src="fire-and-water-2.jpg" alt="Fire and Water 2">
+        <div class="overlay">Fire and Water 2</div>
+      </div>
+    </a>
+
+    <a href="fire-and-water-3.html">
+      <div class="game-card">
+        <img src="fire-and-water-3.jpg" alt="Fire and Water 3">
+        <div class="overlay">Fire and Water 3</div>
+      </div>
+    </a>
+
+    <a href="fire-and-water-4.html">
+      <div class="game-card">
+        <img src="fire-and-water-4.jpg" alt="Fire and Water 4">
+        <div class="overlay">Fire and Water 4</div>
+      </div>
+    </a>
+
+    <a href="fire-and-water-5.html">
+      <div class="game-card">
+        <img src="fire-and-water-5.jpg" alt="Fire and Water 5">
+        <div class="overlay">Fire and Water 5</div>
+      </div>
+    </a>
+
+    <a href="tank-mayhem.html">
+      <div class="game-card">
+        <img src="tank-mayhem.jpg" alt="Tank Mayhem">
+        <div class="overlay">Tank Mayhem</div>
+      </div>
+    </a>
+
   </div>
-
-  <script>
-    const ageChecked = localStorage.getItem('ageChecked') === 'true';
-    const loading = document.getElementById('loading');
-    const ageContainer = document.getElementById('ageContainer');
-
-    setTimeout(() => {
-      loading.style.display = 'none';
-
-      if(ageChecked){
-        window.location.href = "games.html";
-      } else {
-        ageContainer.style.display = 'flex';
-      }
-    }, 3000);
-
-    document.getElementById('olderBtn').addEventListener('click', () => {
-      localStorage.setItem('ageChecked', 'true');
-    });
-
-    document.getElementById('youngerBtn').addEventListener('click', () => {
-      alert("Üzgünüz, site 5 yaş ve üzeri için uygundur.");
-    });
-  </script>
 
 </body>
 </html>
