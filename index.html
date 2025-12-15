@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="google-site-verification" content="161ZToQb2xcvholg7o3apEcUvBWA2h4dTTikDqnQGvA" />
   <title>ClickToPlay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -52,7 +51,7 @@
 
     /* Yaş onayı ekranı */
     #ageContainer {
-      display: none; /* JS ile gösterilecek */
+      display: none;
       flex-direction: column;
       gap: 20px;
       background: rgba(0, 0, 0, 0.6);
@@ -61,7 +60,10 @@
       z-index: 5;
     }
 
-    h1 { font-size: 64px; margin-bottom: 10px; }
+    h1 {
+      font-size: 64px;
+      margin-bottom: 10px;
+    }
 
     .buttons {
       display: flex;
@@ -87,8 +89,10 @@
     .green { background-color: #22c55e; }
     .red { background-color: #ef4444; }
 
-    .btn:hover { transform: scale(1.05); transition: 0.2s; }
-
+    .btn:hover {
+      transform: scale(1.05);
+      transition: 0.2s;
+    }
   </style>
 </head>
 
@@ -118,24 +122,21 @@
     const loading = document.getElementById('loading');
     const ageContainer = document.getElementById('ageContainer');
 
-    // 5 saniye bekle
     setTimeout(() => {
       loading.style.display = 'none';
 
-      if(ageChecked){
-        // Daha önce onay vermişse direkt oyunlar sayfasına yönlendir
+      if (ageChecked) {
         window.location.href = "games.html";
       } else {
-        // Onay vermemişse yaş onayı ekranını göster
         ageContainer.style.display = 'flex';
       }
     }, 3000);
 
-    document.getElementById('olderBtn').addEventListener('click', function() {
+    document.getElementById('olderBtn').addEventListener('click', function () {
       localStorage.setItem('ageChecked', 'true');
     });
 
-    document.getElementById('youngerBtn').addEventListener('click', function() {
+    document.getElementById('youngerBtn').addEventListener('click', function () {
       alert("Üzgünüz, site 5 yaş ve üzeri için uygundur.");
     });
   </script>
