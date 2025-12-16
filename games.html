@@ -215,8 +215,8 @@
 
   <!-- 🎲 GÜNLÜK RANDOM OYNANMA SAYISI -->
   <script>
-    const MAX_PLAYS = 1500;
-    const MIN_PLAYS = 300;
+    const MAX_PLAYS = 200;
+    const MIN_PLAYS = 49;
     const today = new Date().toDateString();
 
     document.querySelectorAll(".game-card").forEach(card => {
@@ -234,7 +234,7 @@
       }
 
       card.querySelector(".play-count").textContent =
-        `🕒 Bugün ${plays} kez oynandı`;
+        ` Bugün ${plays} kez oynandı`;
     });
   </script>
 
