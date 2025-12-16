@@ -103,6 +103,21 @@
     .game-card:hover .overlay {
       opacity: 1;
     }
+
+    /* 🎮 OYNANMA SAYACI */
+    .play-count {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 4px 8px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #22c55e;
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+    }
   </style>
 </head>
 
@@ -117,76 +132,111 @@
   <div class="games">
 
     <a href="basket-random.html">
-      <div class="game-card">
-        <img src="basket-random.jpg" alt="Basket Random">
+      <div class="game-card" data-game="basket-random">
+        <img src="basket-random.jpg">
         <div class="overlay">Basket Random</div>
+        <div class="play-count"></div>
       </div>
     </a>
 
     <a href="tank-struggle.html">
-      <div class="game-card">
-        <img src="tank-struggle.jpg" alt="Tank Struggle">
+      <div class="game-card" data-game="tank-struggle">
+        <img src="tank-struggle.jpg">
         <div class="overlay">Tank Struggle</div>
+        <div class="play-count"></div>
       </div>
     </a>
 
     <a href="stickman-hook.html">
-      <div class="game-card">
-        <img src="stickman-hook.jpg" alt="Stickman Hook">
+      <div class="game-card" data-game="stickman-hook">
+        <img src="stickman-hook.jpg">
         <div class="overlay">Stickman Hook</div>
+        <div class="play-count"></div>
       </div>
     </a>
 
     <a href="subway-surfers.html">
-      <div class="game-card">
-        <img src="subway-surfers.jpg" alt="Subway Surfers">
+      <div class="game-card" data-game="subway-surfers">
+        <img src="subway-surfers.jpg">
         <div class="overlay">Subway Surfers</div>
+        <div class="play-count"></div>
       </div>
     </a>
 
     <a href="fire-and-water-1.html">
-      <div class="game-card">
-        <img src="fire-and-water-1.jpg" alt="Fire and Water 1">
+      <div class="game-card" data-game="fire-water-1">
+        <img src="fire-and-water-1.jpg">
         <div class="overlay">Fire and Water 1</div>
+        <div class="play-count"></div>
       </div>
     </a>
 
     <a href="fire-and-water-2.html">
-      <div class="game-card">
-        <img src="fire-and-water-2.jpg" alt="Fire and Water 2">
+      <div class="game-card" data-game="fire-water-2">
+        <img src="fire-and-water-2.jpg">
         <div class="overlay">Fire and Water 2</div>
+        <div class="play-count"></div>
       </div>
     </a>
 
     <a href="fire-and-water-3.html">
-      <div class="game-card">
-        <img src="fire-and-water-3.jpg" alt="Fire and Water 3">
+      <div class="game-card" data-game="fire-water-3">
+        <img src="fire-and-water-3.jpg">
         <div class="overlay">Fire and Water 3</div>
+        <div class="play-count"></div>
       </div>
     </a>
 
     <a href="fire-and-water-4.html">
-      <div class="game-card">
-        <img src="fire-and-water-4.jpg" alt="Fire and Water 4">
+      <div class="game-card" data-game="fire-water-4">
+        <img src="fire-and-water-4.jpg">
         <div class="overlay">Fire and Water 4</div>
+        <div class="play-count"></div>
       </div>
     </a>
 
     <a href="fire-and-water-5.html">
-      <div class="game-card">
-        <img src="fire-and-water-5.jpg" alt="Fire and Water 5">
+      <div class="game-card" data-game="fire-water-5">
+        <img src="fire-and-water-5.jpg">
         <div class="overlay">Fire and Water 5</div>
+        <div class="play-count"></div>
       </div>
     </a>
 
     <a href="tank-mayhem.html">
-      <div class="game-card">
-        <img src="tank-mayhem.jpg" alt="Tank Mayhem">
+      <div class="game-card" data-game="tank-mayhem">
+        <img src="tank-mayhem.jpg">
         <div class="overlay">Tank Mayhem</div>
+        <div class="play-count"></div>
       </div>
     </a>
 
   </div>
+
+  <!-- 🎲 GÜNLÜK RANDOM OYNANMA SAYISI -->
+  <script>
+    const MAX_PLAYS = 1500;
+    const MIN_PLAYS = 300;
+    const today = new Date().toDateString();
+
+    document.querySelectorAll(".game-card").forEach(card => {
+      const gameId = card.dataset.game;
+      const key = `plays_${gameId}`;
+      const dateKey = `date_${gameId}`;
+
+      let plays = localStorage.getItem(key);
+      let savedDate = localStorage.getItem(dateKey);
+
+      if (!plays || savedDate !== today) {
+        plays = Math.floor(Math.random() * (MAX_PLAYS - MIN_PLAYS)) + MIN_PLAYS;
+        localStorage.setItem(key, plays);
+        localStorage.setItem(dateKey, today);
+      }
+
+      card.querySelector(".play-count").textContent =
+        `🕒 Bugün ${plays} kez oynandı`;
+    });
+  </script>
 
 </body>
 </html>
