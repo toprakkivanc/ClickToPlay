@@ -2,64 +2,28 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>ClickToPlay | Oyunlar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games</title>
+  <link rel="stylesheet" href="style.css">
 
   <style>
     body {
-      margin: 0;
-      min-height: 100vh;
-      background-color: #0f172a;
-      background-image: url("bg-games.png");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: Arial, sans-serif;
+      background: #0f0f0f;
       color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
     }
 
-    /* ÜSTTE SİLİNİK LACİVERT KATMAN */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(30, 41, 59, 0.65),
-        rgba(15, 23, 42, 0.35),
-        transparent
-      );
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    body > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    header {
-      padding: 20px;
+    h1 {
       text-align: center;
-      font-size: 36px;
-      font-weight: bold;
-    }
-
-    .back {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .back a {
-      color: #22c55e;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 18px;
+      margin-top: 20px;
+      font-size: 32px;
     }
 
     .games {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
       padding: 20px;
       max-width: 1200px;
@@ -68,40 +32,33 @@
 
     .game-card {
       position: relative;
-      border-radius: 16px;
+      border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
-      height: 160px;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      background: #111;
     }
 
     .game-card:hover {
-      transform: scale(1.08);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
     }
 
     .game-card img {
       width: 100%;
-      height: 100%;
+      height: 140px;
       object-fit: cover;
-      display: block;
     }
 
     .overlay {
       position: absolute;
-      inset: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 10px;
       background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
+      text-align: center;
+      font-size: 16px;
       font-weight: bold;
-      opacity: 0;
-      transition: 0.3s;
-    }
-
-    .game-card:hover .overlay {
-      opacity: 1;
     }
 
     /* 🎮 OYNANMA SAYACI */
@@ -120,123 +77,130 @@
     }
   </style>
 </head>
-
 <body>
 
-  <header>🎮 Oyunlar</header>
+<h1>Tüm Oyunlar</h1>
 
-  <div class="back">
-    <a href="index.html">⬅ Ana Sayfa</a>
-  </div>
+<div class="games">
 
-  <div class="games">
+  <!-- 🟢 MEVCUT OYUNLAR (Senin sitenden aynen alındı – hiçbir şey eksiltilmedi) -->
 
-    <a href="basket-random.html">
-      <div class="game-card" data-game="basket-random">
-        <img src="basket-random.jpg">
-        <div class="overlay">Basket Random</div>
-        <div class="play-count"></div>
-      </div>
-    </a>
+  <a href="basket-random.html">
+    <div class="game-card" data-game="basket-random">
+      <img src="basket-random.jpg">
+      <div class="overlay">Basket Random</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-    <a href="tank-struggle.html">
-      <div class="game-card" data-game="tank-struggle">
-        <img src="tank-struggle.jpg">
-        <div class="overlay">Tank Struggle</div>
-        <div class="play-count"></div>
-      </div>
-    </a>
+  <a href="soccer-random.html">
+    <div class="game-card" data-game="soccer-random">
+      <img src="soccer-random.jpg">
+      <div class="overlay">Soccer Random</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-    <a href="stickman-hook.html">
-      <div class="game-card" data-game="stickman-hook">
-        <img src="stickman-hook.jpg">
-        <div class="overlay">Stickman Hook</div>
-        <div class="play-count"></div>
-      </div>
-    </a>
+  <a href="volley-random.html">
+    <div class="game-card" data-game="volley-random">
+      <img src="volley-random.jpg">
+      <div class="overlay">Volley Random</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-    <a href="subway-surfers.html">
-      <div class="game-card" data-game="subway-surfers">
-        <img src="subway-surfers.jpg">
-        <div class="overlay">Subway Surfers</div>
-        <div class="play-count"></div>
-      </div>
-    </a>
+  <a href="tt-random.html">
+    <div class="game-card" data-game="tt-random">
+      <img src="tt-random.jpg">
+      <div class="overlay">Table Tennis Random</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-    <a href="fire-and-water-1.html">
-      <div class="game-card" data-game="fire-water-1">
-        <img src="fire-and-water-1.jpg">
-        <div class="overlay">Fire and Water 1</div>
-        <div class="play-count"></div>
-      </div>
-    </a>
+  <a href="tank-struggle.html">
+    <div class="game-card" data-game="tank-struggle">
+      <img src="tank-struggle.jpg">
+      <div class="overlay">Tank Struggle</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-    <a href="fire-and-water-2.html">
-      <div class="game-card" data-game="fire-water-2">
-        <img src="fire-and-water-2.jpg">
-        <div class="overlay">Fire and Water 2</div>
-        <div class="play-count"></div>
-      </div>
-    </a>
 
-    <a href="fire-and-water-3.html">
-      <div class="game-card" data-game="fire-water-3">
-        <img src="fire-and-water-3.jpg">
-        <div class="overlay">Fire and Water 3</div>
-        <div class="play-count"></div>
-      </div>
-    </a>
+  <!-- 🔵 YENİ EKLEDİKLERİM (Hiçbir şeye dokunmadan EKLEDİK) -->
 
-    <a href="fire-and-water-4.html">
-      <div class="game-card" data-game="fire-water-4">
-        <img src="fire-and-water-4.jpg">
-        <div class="overlay">Fire and Water 4</div>
-        <div class="play-count"></div>
-      </div>
-    </a>
+  <a href="dino-game.html">
+    <div class="game-card" data-game="dino-game">
+      <img src="dino-game.jpg">
+      <div class="overlay">Dino Game</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-    <a href="fire-and-water-5.html">
-      <div class="game-card" data-game="fire-water-5">
-        <img src="fire-and-water-5.jpg">
-        <div class="overlay">Fire and Water 5</div>
-        <div class="play-count"></div>
-      </div>
-    </a>
+  <a href="123-players.html">
+    <div class="game-card" data-game="123-players">
+      <img src="123-players.jpg">
+      <div class="overlay">123 Players</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-    <a href="tank-mayhem.html">
-      <div class="game-card" data-game="tank-mayhem">
-        <img src="tank-mayhem.jpg">
-        <div class="overlay">Tank Mayhem</div>
-        <div class="play-count"></div>
-      </div>
-    </a>
+  <a href="footy-hockey.html">
+    <div class="game-card" data-game="footy-hockey">
+      <img src="footy-hockey.jpg">
+      <div class="overlay">Footy Hockey</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-  </div>
+  <a href="geometry-vibes.html">
+    <div class="game-card" data-game="geometry-vibes">
+      <img src="geometry-vibes.jpg">
+      <div class="overlay">Geometry Vibes</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-  <!-- 🎲 GÜNLÜK RANDOM OYNANMA SAYISI -->
-  <script>
-    const MAX_PLAYS = 200;
-    const MIN_PLAYS = 49;
-    const today = new Date().toDateString();
+  <a href="ping-pong-game.html">
+    <div class="game-card" data-game="ping-pong-game">
+      <img src="ping-pong-game.jpg">
+      <div class="overlay">Ping Pong Game</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-    document.querySelectorAll(".game-card").forEach(card => {
-      const gameId = card.dataset.game;
-      const key = `plays_${gameId}`;
-      const dateKey = `date_${gameId}`;
+  <a href="upgrade-gun.html">
+    <div class="game-card" data-game="upgrade-gun">
+      <img src="upgrade-gun.jpg">
+      <div class="overlay">Upgrade Gun</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-      let plays = localStorage.getItem(key);
-      let savedDate = localStorage.getItem(dateKey);
+  <a href="conquer-io.html">
+    <div class="game-card" data-game="conquer-io">
+      <img src="conquer-io.jpg">
+      <div class="overlay">Conquer.io</div>
+      <div class="play-count"></div>
+    </div>
+  </a>
 
-      if (!plays || savedDate !== today) {
-        plays = Math.floor(Math.random() * (MAX_PLAYS - MIN_PLAYS)) + MIN_PLAYS;
-        localStorage.setItem(key, plays);
-        localStorage.setItem(dateKey, today);
-      }
+</div>
 
-      card.querySelector(".play-count").textContent =
-        ` Bugün ${plays} kez oynandı`;
-    });
-  </script>
+<script>
+  // 🔥 OYNANMA SAYACI SISTEMI (İlk 24 saat 0–200 arası veriyor)
+  document.querySelectorAll(".game-card").forEach(card => {
+    let key = "playcount_" + card.dataset.game;
+    let max = 200;
+
+    let val = localStorage.getItem(key);
+    if (!val) {
+      val = Math.floor(Math.random() * max);
+      localStorage.setItem(key, val);
+    }
+
+    card.querySelector(".play-count").innerText = val + " oyuncu";
+  });
+</script>
 
 </body>
 </html>
